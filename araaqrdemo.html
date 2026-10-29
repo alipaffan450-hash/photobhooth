@@ -1,0 +1,1250 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PHOTOBHOOTH VINTAGE · ARA_9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+:root{--ink:#111;--paper:#f6f2ea;--cream:#efe8da;--line:#d8d1c3;--grey:#7d786e;--pink:#f4cfd8;--lav:#d9d0ee;--blue:#cfe3f1;--mint:#cfe9dc;--butter:#f5e9b8;--peach:#f8d9c4;--serif:"Cormorant Garamond",Georgia,serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{margin:0;overflow-x:hidden}
+body{font:400 15px/1.5 Jost,system-ui,sans-serif;color:var(--ink);min-height:100dvh;padding:env(safe-area-inset-top) 16px 28px;background:var(--paper)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.eyebrow{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:var(--grey)}
+.card{background:#fffdf8;border:1px solid var(--line);border-radius:4px}
+.btn{min-height:50px;padding:0 22px;border:1px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);font:500 .72rem Jost,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:transform .15s,background .25s,color .25s}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn:active{transform:scale(.96)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.primary:hover{background:#333}
+.btn.small{min-height:44px;padding:0 16px}
+a.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+.btn:disabled{opacity:.35;pointer-events:none}
+.btn[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.chip{min-height:46px;padding:0 16px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:500 .78rem Jost,system-ui,sans-serif;letter-spacing:.06em;cursor:pointer;transition:transform .15s,background .2s}
+.chip:active{transform:scale(.95)}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip:disabled{opacity:.35;pointer-events:none}
+@keyframes fade{from{opacity:0}}
+/* ===== Intro ===== */
+.intro{position:fixed;inset:0;z-index:100;background:#0c0c0c;color:var(--paper);display:grid;place-items:center;text-align:center;transition:opacity .8s ease,visibility 0s .8s}
+.intro::before{content:"";position:absolute;inset:16px;border:1px solid rgba(246,242,234,.25);pointer-events:none}
+.intro.out{opacity:0;visibility:hidden}
+.skip{position:absolute;right:28px;bottom:calc(28px + env(safe-area-inset-bottom));background:none;border:0;border-bottom:1px solid rgba(246,242,234,.5);color:var(--paper);font:500 .68rem Jost,sans-serif;letter-spacing:.28em;padding:10px 2px;min-height:44px;cursor:pointer}
+.i-in{display:flex;flex-direction:column;align-items:center;gap:16px;padding:0 24px}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes ls{from{opacity:0;letter-spacing:.9em}to{opacity:1;letter-spacing:.2em}}
+@keyframes ln{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.i-el{opacity:0;animation:fi .9s ease forwards}
+.i-small{font-size:.74rem;letter-spacing:.7em;animation-delay:.2s}
+.i-title{font:500 clamp(1.7rem,8vw,3.4rem)/1.15 var(--serif);margin:6px 0}
+.i-title span,.i-title em{display:block;opacity:0;animation:ls 1.8s cubic-bezier(.2,.7,.2,1) forwards}
+.i-title span{animation-delay:.7s}
+.i-title em{font-style:italic;font-weight:500;animation-delay:1.1s}
+.i-flower{width:38px;height:38px;animation-delay:1.7s}
+.i-line{display:block;width:120px;height:1px;background:var(--paper);opacity:1;transform:scaleX(0);animation:ln 1s ease 1.9s forwards}
+.i-about{font-size:.7rem;letter-spacing:.42em;animation-delay:2.3s}
+/* ===== Landing ===== */
+body[data-view=landing] #app{display:none}
+body[data-view=app] #landing{display:none}
+.lp{max-width:820px;margin:0 auto;padding:6px 0 20px;animation:fade .5s}
+.lp-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--ink)}
+.logo{font:600 1.7rem/1 var(--serif);letter-spacing:.04em}
+.logo i{font-style:italic;font-weight:500}
+.lp-chip{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--ink);border-radius:999px;padding:7px 12px}
+.lp-hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(28px,6vw,56px) 4px 8px}
+.lp-title{display:flex;flex-direction:column;align-items:center;margin-top:14px;font:500 clamp(2.4rem,11vw,5.6rem)/1 var(--serif);letter-spacing:.06em}
+.lp-title em{font-style:italic;font-weight:500;letter-spacing:.02em;margin-top:.05em;position:relative}
+.lp-title em::after{content:"";position:absolute;left:8%;right:8%;bottom:.04em;height:.16em;background:var(--pink);z-index:-1}
+.lp-desc{max-width:34em;margin-top:18px;color:#4b4741;line-height:1.7}
+.lp-step{margin-top:30px;display:flex;align-items:center;gap:10px;width:100%;max-width:560px}
+.lp-step::before,.lp-step::after{content:"";flex:1;height:1px;background:var(--line)}
+.lp-layouts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(100%,560px);margin-top:14px}
+.lp-card{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px;padding:14px 6px 12px;border:1px solid var(--line);border-radius:4px;background:#fffdf8;font:inherit;color:inherit;cursor:pointer;transition:transform .2s,border-color .2s}
+.lp-card:hover{transform:translateY(-2px)}
+.lp-card b{font-size:.62rem;font-weight:600;letter-spacing:.14em;margin-top:4px}
+.lp-card small{font-size:.66rem;color:var(--grey);line-height:1.3}
+.lp-card[aria-checked=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.mini{display:grid;gap:3px;padding:4px;background:#fff;border:1px solid var(--ink);align-content:start;min-height:64px}
+.mini i{display:block;aspect-ratio:4/3;background:linear-gradient(145deg,var(--pink),var(--lav))}
+.rec-toggle{display:flex;align-items:center;gap:14px;width:min(100%,560px);margin-top:18px;padding:14px 16px;border:1px solid var(--line);border-radius:4px;background:#fffdf8;text-align:left;cursor:pointer}
+.rec-toggle input{width:26px;height:26px;accent-color:var(--ink);flex:none}
+.rec-toggle b{display:block;font-size:.72rem;letter-spacing:.2em}
+.rec-toggle small{color:var(--grey);font-size:.78rem}
+.lp-cta{display:flex;align-items:center;gap:12px;width:min(100%,560px);min-height:68px;margin-top:22px;padding:0 14px 0 24px;border:0;border-radius:999px;background:var(--ink);color:var(--paper);font:500 .8rem Jost,system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase;cursor:pointer;transition:transform .2s,background .2s}
+.lp-cta span{flex:1;text-align:center}
+.lp-cta .go{flex:none;box-sizing:content-box;padding:10px;border-radius:50%;background:var(--pink);color:var(--ink)}
+.lp-cta:hover{background:#2b2b2b;transform:translateY(-2px)}
+.about{margin-top:44px;padding:28px 22px;text-align:center;border:1px solid var(--ink);position:relative}
+.about h2{font:italic 600 1.9rem/1.1 var(--serif);margin:8px 0 12px}
+.about p{max-width:36em;margin:0 auto;color:#4b4741;line-height:1.7}
+.tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
+.tags span{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--c,var(--pink))}
+.lp-feats{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.lp-feats li{padding:18px;background:#fffdf8;border:1px solid var(--line)}
+.lp-feats h3{font:600 1.2rem var(--serif)}
+.lp-feats p{font-size:.84rem;color:#5b564d;margin-top:4px}
+.foot{margin-top:30px;text-align:center;font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--grey)}
+@media(max-width:640px){.lp-feats{grid-template-columns:1fr}.lp-chip{font-size:.55rem;padding:6px 9px}}
+/* ===== App ===== */
+#app{animation:fade .45s}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--ink);max-width:1280px;margin:0 auto 18px}
+.top .eyebrow{text-align:right}
+.layout{display:grid;gap:20px;max-width:1280px;margin:0 auto;align-items:start}
+@media(min-width:900px){.layout{grid-template-columns:minmax(0,1.5fr) minmax(300px,.9fr)}}
+.booth{container-type:inline-size;width:min(100%,calc((100dvh - 250px)/.75));min-width:min(100%,320px);margin:0 auto}
+.stage{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--line);border:1px solid var(--ink);touch-action:none;user-select:none;-webkit-user-select:none}
+.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mirror{transform:scaleX(-1)}
+body[data-state=result] .stage{display:none}
+.overlay{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:6%;text-align:center;background:rgba(246,242,234,.94);animation:fade .4s}
+.overlay h2{font:italic 600 clamp(1.4rem,5cqw,2.2rem) var(--serif)}
+.overlay p{max-width:36ch;color:var(--grey);line-height:1.5}
+.spin{display:none;width:40px;height:40px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--ink);animation:rot 1s linear infinite}
+.overlay[data-k=loading] .spin{display:block}
+@keyframes rot{to{transform:rotate(360deg)}}
+.count{position:absolute;inset:0;z-index:4;display:grid;place-items:center;pointer-events:none;font:italic 600 26cqw/1 var(--serif);color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.6)}
+.count.pop{animation:pop .9s ease-out}
+@keyframes pop{0%{transform:scale(.4);opacity:0}25%{transform:scale(1.1);opacity:1}100%{transform:scale(1);opacity:.1}}
+.flash{position:absolute;inset:0;z-index:6;background:#fff;opacity:0;pointer-events:none}
+.flash.go{animation:flash .45s ease-out}
+@keyframes flash{0%{opacity:.9}100%{opacity:0}}
+.dots{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:4;background:rgba(246,242,234,.92);border:1px solid var(--ink);padding:5px 14px;border-radius:999px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase}
+.rec{position:absolute;top:10px;left:10px;z-index:4;display:flex;align-items:center;gap:8px;background:rgba(17,17,17,.82);color:#fff;padding:5px 12px;border-radius:999px;font-size:.7rem;letter-spacing:.14em}
+.rec::before{content:"";width:9px;height:9px;border-radius:50%;background:#e5383b;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:.2}}
+#editor{display:none;text-align:center}
+body[data-state=result] #editor{display:block;animation:fade .5s}
+.ewrap{position:relative;display:inline-block;line-height:0;max-width:100%}
+#resultCanvas{display:block;max-width:100%;max-height:calc(100dvh - 230px);width:auto;height:auto;box-shadow:0 20px 40px -26px rgba(0,0,0,.6)}
+#decoLayer{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.deco{position:absolute;pointer-events:auto;touch-action:none;cursor:grab}
+.deco img{display:block;width:100%;height:auto;pointer-events:none;-webkit-user-drag:none}
+.deco.sel{outline:1.5px dashed var(--ink);outline-offset:4px}
+.deco .x,.deco .h{display:none;position:absolute;width:48px;height:48px;border-radius:50%;border:2px solid #fff;place-items:center;box-shadow:0 4px 10px rgba(0,0,0,.25);touch-action:none;padding:0;background:var(--ink)}
+.deco.sel .x,.deco.sel .h{display:grid}
+.deco .x{left:-24px;top:-24px}
+.deco .h{right:-24px;bottom:-24px;cursor:nwse-resize}
+.controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;margin-top:16px}
+.grow{flex:1 1 0;min-width:0}
+.extras{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:flex-start;margin-top:18px;line-height:1.4}
+.extras .card{padding:16px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.extras h3{font:600 1.2rem var(--serif)}
+#vidBox{width:min(100%,320px)}
+#resVideo{width:100%;max-height:50dvh;background:#000;border:1px solid var(--ink)}
+#qrBox{width:min(100%,290px)}
+.qr-status{font-size:.9rem;color:var(--grey)}
+.qr-status.err{color:#b3261e}
+#qrBox.busy{animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.6}}
+#qrCanvas{width:100%;max-width:250px;height:auto;image-rendering:pixelated;border:1px solid var(--line)}
+.hint{font-size:.84rem;color:var(--grey);line-height:1.45}
+.qr-actions{display:flex;flex-direction:column;gap:8px;width:100%;align-items:center}
+.qr-actions a{max-width:100%;font-size:.7rem;color:var(--grey);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.live{padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.live h3,.panel h3{align-self:flex-start;font-size:.68rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--grey)}
+#liveCanvas{max-width:100%;max-height:40dvh;width:auto;height:auto;box-shadow:0 10px 24px -16px rgba(0,0,0,.5)}
+.panel{padding:14px;max-height:calc(100dvh - 130px);overflow-y:auto;min-width:0}
+@media(max-width:899px){.panel{max-height:none}}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);margin-bottom:16px}
+.tab{min-height:48px;border:0;border-bottom:2px solid transparent;background:transparent;font:500 .7rem Jost,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);cursor:pointer}
+.tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--ink)}
+.pane{display:flex;flex-direction:column;gap:14px;animation:fade .3s}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.check{display:flex;gap:10px;align-items:center;min-height:46px;font-size:.92rem}
+.check input{width:24px;height:24px;accent-color:var(--ink);flex:none}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.thumb{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px;border:1px solid var(--line);background:#fff;font:400 .6rem Jost,sans-serif;color:var(--grey);cursor:pointer;min-height:66px}
+.thumb:active{transform:scale(.93)}
+.thumb img{width:100%;aspect-ratio:1;object-fit:contain}
+.filters{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.fchip{display:flex;align-items:center;gap:10px;min-height:54px;padding:6px 10px;border:1px solid var(--line);background:#fff;font:500 .82rem Jost,sans-serif;color:var(--ink);cursor:pointer;text-align:left}
+.fchip[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.fchip .sw{width:36px;height:36px;flex:none;background:linear-gradient(135deg,var(--pink),#fff 45%,var(--lav) 70%,var(--mint))}
+.cat{font-size:.68rem;font-weight:500;letter-spacing:.26em;margin:6px 0 2px;color:var(--ink)}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.fbtn{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:6px;padding:8px 4px;border:1px solid var(--line);background:#fff;font:400 .62rem Jost,sans-serif;letter-spacing:.04em;color:var(--grey);cursor:pointer;min-height:112px;text-align:center}
+.fbtn canvas{height:84px;width:auto;max-width:100%;object-fit:contain}
+.fbtn[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);max-width:min(92vw,520px);background:var(--ink);color:#fff;padding:14px 20px;border-radius:4px;z-index:95;line-height:1.4;animation:fade .3s}
+.toast.err{background:#b3261e}
+#rv{display:none;max-width:560px;margin:0 auto;text-align:center;animation:fade .5s}
+body[data-view=result] #rv{display:block}
+body[data-view=result] #landing,body[data-view=result] #app{display:none}
+#rv header{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--ink);margin-bottom:22px}
+#rv h1{font:italic 600 2rem/1.1 var(--serif);margin:6px 0 4px}
+.rv-media{margin:20px 0}
+.rv-media img{max-width:100%;max-height:78dvh;height:auto;box-shadow:0 20px 40px -26px rgba(0,0,0,.6);background:#fff}
+.rv-media video{width:100%;max-height:70dvh;background:#000;border:1px solid var(--ink)}
+.rv-media h2{font:600 1.25rem var(--serif);margin:0 0 10px}
+#rv .note{font-size:.82rem;color:var(--grey);margin-top:14px}
+#rv .err{color:#b3261e}
+#rv .spin{display:block;margin:40px auto}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.intro *{opacity:1!important;transform:none!important;letter-spacing:.2em}.i-line{transform:none!important}}
+</style>
+</head>
+<body data-state="idle" data-view="landing">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="sym-cam" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="13.2" r="3.4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="sym-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="sym-flower" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="24" cy="12" rx="6" ry="10"/><ellipse cx="24" cy="12" rx="6" ry="10" transform="rotate(72 24 24)"/><ellipse cx="24" cy="12" rx="6" ry="10" transform="rotate(144 24 24)"/><ellipse cx="24" cy="12" rx="6" ry="10" transform="rotate(216 24 24)"/><ellipse cx="24" cy="12" rx="6" ry="10" transform="rotate(288 24 24)"/><circle cx="24" cy="24" r="4"/></g></symbol>
+</svg>
+
+<div id="intro" class="intro" role="dialog" aria-label="Pembuka ARA_9">
+  <div class="i-in">
+    <p class="i-small i-el">A R A _ 9</p>
+    <h1 class="i-title"><span>PHOTOBHOOTH</span><em>VINTAGE</em></h1>
+    <svg class="i-flower i-el" viewBox="0 0 48 48" aria-hidden="true"><use href="#sym-flower"/></svg>
+    <span class="i-line"></span>
+    <p class="i-about i-el">ABOUT ARA_9</p>
+  </div>
+  <button id="skipIntro" class="skip">SKIP INTRO</button>
+</div>
+
+<section id="rv" aria-label="Hasil sesi">
+  <header><div class="logo">ARA<i>_9</i></div><span class="eyebrow">Photobhooth Vintage</span></header>
+  <div id="rvLoading"><div class="spin"></div><p class="eyebrow">Membuka hasil…</p></div>
+  <div id="rvFail" hidden><h1>Hasil tidak bisa dibuka</h1><p class="note err" id="rvFailMsg"></p></div>
+  <div id="rvOk" hidden>
+    <p class="eyebrow">Hasil sesi kamu</p>
+    <h1>Terima kasih sudah berfoto</h1>
+    <div class="rv-media"><img id="rvPhoto" alt="Hasil photobooth ARA_9"></div>
+    <button class="btn primary" id="rvDlPhoto">Download foto</button>
+    <div class="rv-media" id="rvVidWrap" hidden><h2>Video sesi</h2><video id="rvVid" controls playsinline preload="metadata"></video><button class="btn" id="rvDlVid">Download video</button></div>
+    <div><button class="btn" id="rvDlAll" hidden>Download semua</button></div>
+    <p class="note" id="rvExp"></p>
+  </div>
+  <p class="foot">© ARA_9 · Photobhooth Vintage</p>
+</section>
+
+<section id="landing" class="lp" aria-label="Beranda">
+  <header class="lp-head">
+    <div class="logo">ARA<i>_9</i></div>
+    <span class="lp-chip">Photobhooth Vintage</span>
+  </header>
+  <div class="lp-hero">
+    <p class="eyebrow">ARA_9 · fashion muslim modern</p>
+    <h2 class="lp-title"><span>PHOTOBHOOTH</span><em>Vintage</em></h2>
+    <p class="lp-desc">Abadikan momenmu dengan gaya ara_9. Pilih layout, frame, dan aksesoris favorit, lalu simpan hasilnya lewat QR code.</p>
+
+    <p class="eyebrow lp-step" id="pickLabel">Pilih layout</p>
+    <div class="lp-layouts" id="lpLayouts" role="radiogroup" aria-labelledby="pickLabel"></div>
+
+    <label class="rec-toggle"><input type="checkbox" id="cbRecL"><span><b>RECORD VIDEO</b><small>Rekam video selama sesi foto (opsional). Dimulai hanya setelah kamu menekan tombol mulai.</small></span></label>
+
+    <button class="lp-cta" id="btnLanding">
+      <svg width="24" height="24"><use href="#sym-cam"/></svg>
+      <span>Mulai Sesi Foto</span>
+      <svg class="go" width="24" height="24"><use href="#sym-arrow"/></svg>
+    </button>
+  </div>
+
+  <div class="about">
+    <svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><use href="#sym-flower"/></svg>
+    <p class="eyebrow">Tentang brand</p>
+    <h2>ABOUT ARA_9</h2>
+    <p>ARA_9 (ara nine) adalah brand fashion muslim modern dengan gaya elegan dan fashionable. Photobooth ini dibuat sebagai bagian dari dunia visual ARA_9.</p>
+    <div class="tags"><span>Baju muslim</span><span style="--c:var(--lav)">Gamis kekinian</span><span style="--c:var(--blue)">Hijab</span><span style="--c:var(--mint)">Sepatu</span><span style="--c:var(--butter)">Tas</span></div>
+  </div>
+  <ul class="lp-feats">
+    <li><h3>26 Frame</h3><p>Classic, pastel, bentuk, dan ARA_9 Signature.</p></li>
+    <li><h3>Aksesoris</h3><p>Geser, perbesar, dan putar dengan jari.</p></li>
+    <li><h3>Foto + Video</h3><p>Unduh lewat QR code di HP kamu.</p></li>
+  </ul>
+  <p class="foot">© ARA_9 · Photobhooth Vintage</p>
+</section>
+
+<div id="app">
+<header class="top">
+  <div class="logo">ARA<i>_9</i></div>
+  <p class="eyebrow">Photobhooth Vintage</p>
+</header>
+
+<main class="layout">
+  <section class="cam-col" aria-label="Kamera">
+    <div class="booth" id="booth">
+      <div class="stage" id="stage">
+        <video id="video" playsinline muted autoplay></video>
+        <div class="rec" id="recBadge" hidden><span>REC</span><span id="recTime">00:00</span></div>
+        <div class="dots" id="dots" hidden></div>
+        <div class="count" id="count" aria-live="assertive"></div>
+        <div class="flash" id="flash"></div>
+        <div class="overlay" id="overlay">
+          <div class="spin"></div>
+          <h2 id="ovTitle"></h2>
+          <p id="ovText"></p>
+        </div>
+      </div>
+      <div id="editor">
+        <div class="ewrap" id="ewrap">
+          <canvas id="resultCanvas"></canvas>
+          <div id="decoLayer"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn primary" id="btnStart" data-states="idle error">Mulai kamera</button>
+      <button class="btn primary" id="btnCapture" data-states="live">Ambil foto</button>
+      <button class="btn" id="btnCancel" data-states="counting">Batalkan sesi</button>
+      <button class="btn" id="btnRecStop" hidden>Berhenti rekam</button>
+      <button class="btn" id="btnSwitch" data-states="live" hidden>Ganti kamera</button>
+      <button class="btn" id="btnStop" data-states="live">Matikan kamera</button>
+      <button class="btn" id="btnRetake" data-states="result">Retake</button>
+      <button class="btn primary" id="btnDownload" data-states="result">Download Foto</button>
+      <button class="btn" id="btnQr" data-states="result">Simpan &amp; QR</button>
+      <button class="btn" id="btnNew" data-states="result">Sesi baru</button>
+      <span class="grow"></span>
+      <button class="btn small" id="btnMirror" aria-pressed="false">Mirror</button>
+      <button class="btn small" id="btnMute" aria-pressed="false">Suara aktif</button>
+      <button class="btn small" id="btnHome">Beranda</button>
+    </div>
+
+    <div class="extras">
+      <div class="card" id="vidBox" hidden>
+        <h3>Video sesi</h3>
+        <video id="resVideo" controls playsinline></video>
+        <a class="btn small" id="vidDl" href="#" download>Download video</a>
+      </div>
+      <div class="card" id="qrBox" hidden>
+        <h3>Unduh di HP kamu</h3>
+        <p class="qr-status" id="qrStatus" role="status"></p>
+        <canvas id="qrCanvas" hidden aria-label="QR code hasil photobooth"></canvas>
+        <p class="hint" id="qrHint" hidden>Scan dengan kamera HP untuk membuka foto (dan video) kamu. Hasil tersimpan online selama 7 hari dan hanya bisa dibuka lewat link atau QR ini.</p>
+        <div class="qr-actions" id="qrActions" hidden>
+          <a id="qrLink" href="#" target="_blank" rel="noopener"></a>
+          <button class="btn small" id="btnCopy">Salin link</button>
+        </div>
+        <button class="btn small" id="btnQrRetry" hidden>Coba lagi</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="side">
+  <div class="live card" id="livePanel" hidden>
+    <h3>Hasil live</h3>
+    <canvas id="liveCanvas" aria-label="Pratinjau hasil akhir secara langsung"></canvas>
+  </div>
+  <aside class="panel card" aria-label="Pengaturan">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-tab="foto" aria-selected="true">Foto</button>
+      <button class="tab" role="tab" data-tab="frame" aria-selected="false">Frame</button>
+      <button class="tab" role="tab" data-tab="hiasan" aria-selected="false">Hiasan</button>
+      <button class="tab" role="tab" data-tab="filter" aria-selected="false">Filter</button>
+    </div>
+
+    <div class="pane" data-pane="foto">
+      <h3>Layout</h3>
+      <div class="seg" id="layChips"></div>
+      <h3>Timer</h3>
+      <div class="seg">
+        <button class="chip" data-timer="0">Tanpa timer</button>
+        <button class="chip" data-timer="3">3 detik</button>
+        <button class="chip" data-timer="5">5 detik</button>
+      </div>
+      <h3>Record video</h3>
+      <label class="check"><input type="checkbox" id="cbRec"> RECORD VIDEO (foto + video)</label>
+      <label class="check"><input type="checkbox" id="cbAudio"> Rekam dengan suara</label>
+      <label class="check"><input type="checkbox" id="cbEx"> Hasil foto ikut dibalik seperti preview mirror</label>
+      <p class="hint">Layout dan jumlah foto dikunci setelah sesi dimulai. Tekan Retake atau Sesi baru untuk mengganti.</p>
+      <button class="btn" id="btnResetAll">Reset semua pengaturan</button>
+    </div>
+
+    <div class="pane" data-pane="frame" hidden>
+      <div id="frames"></div>
+    </div>
+
+    <div class="pane" data-pane="hiasan" hidden>
+      <div class="thumbs" id="thumbs"></div>
+      <p class="hint">Ambil foto dulu, lalu ketuk aksesoris untuk menambah. Geser dengan satu jari, cubit dengan dua jari untuk memperbesar dan memutar, atau tarik ikon panah di sudutnya.</p>
+      <div class="seg">
+        <button class="chip" id="btnUndo">Undo</button>
+        <button class="chip" id="btnSmall">Kecil</button>
+        <button class="chip" id="btnBig">Besar</button>
+        <button class="chip" id="btnRotL">Putar kiri</button>
+        <button class="chip" id="btnRotR">Putar kanan</button>
+        <button class="chip" id="btnFront">Ke depan</button>
+        <button class="chip" id="btnBack">Ke belakang</button>
+        <button class="chip" id="btnDel">Hapus</button>
+        <button class="chip" id="btnClear">Reset hiasan</button>
+      </div>
+    </div>
+
+    <div class="pane" data-pane="filter" hidden>
+      <div class="filters" id="filters"></div>
+    </div>
+  </aside>
+  </div>
+</main>
+<p class="foot" style="margin-top:28px">© ARA_9 · Photobhooth Vintage</p>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+/* ===== Konfigurasi Supabase (kunci publishable memang aman di frontend; JANGAN taruh service_role) ===== */
+const SB_URL = 'https://ygmpkqrqbgmlarjpuwtk.supabase.co';
+const SB_KEY = 'sb_publishable__uRx7WPYAVMklazgoMjl8Q_XYvI8NRe';
+const SB_BUCKET = 'ara9-photobooth';   // bucket PRIVATE, dibuat lewat supabase-setup.sql
+const RETENTION_DAYS = 7;              // masa berlaku hasil
+const PUBLIC_BASE_URL = '';            // isi alamat lengkap halaman ini, mis. 'https://namadomain.com/', bila dibuka dari alamat lokal/non-HTTPS
+const CAP = 'ARA_9 · PHOTOBHOOTH VINTAGE';
+let upId = 0, pid = 0, uid = 0;
+
+/* ===== Layout ===== */
+const LAYOUTS = {
+  strip4: { n: 4, cols: 1, name: 'VERTICAL STRIP', sub: '4 foto · 1 kolom' },
+  grid4: { n: 4, cols: 2, name: '2 × 2 GRID', sub: '4 foto · 2 kolom' },
+  six: { n: 6, cols: 2, name: 'SIX PHOTO', sub: '6 foto · 2 kolom × 3 baris' },
+  two: { n: 2, cols: 1, name: 'VERTICAL TWO', sub: '2 foto · atas & bawah' },
+  strip3: { n: 3, cols: 1, name: 'STRIP 3', sub: '3 foto · 1 kolom' },
+  single: { n: 1, cols: 1, name: 'SINGLE', sub: '1 foto' }
+};
+const FILTERS = {
+  original: { label: 'Original' },
+  bw: { label: 'Black & White', c: 1.1, g: 1 },
+  noir: { label: 'Noir', c: 1.35, b: .95, g: 1 },
+  vintage: { label: 'Vintage', b: 1.02, c: .9, s: .75, sep: .45 },
+  sepia: { label: 'Sepia', c: 1.05, sep: .9 },
+  softpink: { label: 'Soft Pink', b: 1.08, c: .92, s: 1.2, sep: .2, hue: -18 },
+  warm: { label: 'Warm', b: 1.05, c: 1.05, s: 1.25, sep: .25, hue: -8 },
+  dreamy: { label: 'Dreamy', b: 1.15, c: .82, s: 1.3, hue: 10 }
+};
+const DEF = { layout: 'strip4', timer: 3, mirror: false, exMirror: false, muted: false, filter: 'original', frame: 'c-white', wantVideo: false, audio: true };
+const S = { ...DEF, facing: 'user', decos: [], sel: null, photos: [], state: 'idle', stream: null, devices: [], devIdx: 0, run: 0,
+  final: null, ver: 0, video: null, rec: null, recording: false, up: null, qrUrl: null, qrVer: -1, hist: [] };
+
+/* ===== Aksesoris (SVG transparan buatan sendiri) ===== */
+const INK = '#111', ST = `stroke="${INK}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"`;
+const rot = (n, f) => Array.from({ length: n }, (_, i) => f(i * 360 / n)).join('');
+const starPts = (cx, cy, ro, ri) => Array.from({ length: 10 }, (_, i) => {
+  const r = i % 2 ? ri : ro, a = (-90 + i * 36) * Math.PI / 180;
+  return (cx + r * Math.cos(a)).toFixed(1) + ',' + (cy + r * Math.sin(a)).toFixed(1);
+}).join(' ');
+const A = (id, l, w, vb, inner) => ({ id, l, w, ar: vb[1] / vb[0], img: null,
+  src: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${vb[0]} ${vb[1]}" width="${vb[0] * 4}" height="${vb[1] * 4}">${inner}</svg>`) });
+const ASSETS = [
+  A('flower', 'Bunga', .16, [100, 100], `<g fill="#f4cfd8" ${ST}>${rot(5, a => `<ellipse cx="50" cy="27" rx="13" ry="21" transform="rotate(${a} 50 50)"/>`)}</g><circle cx="50" cy="50" r="10" fill="#f5e9b8" ${ST}/>`),
+  A('bow', 'Pita', .2, [100, 100], `<g fill="#f4cfd8" ${ST}><path d="M50 50C30 22 6 26 9 50C6 74 30 78 50 50Z"/><path d="M50 50C70 22 94 26 91 50C94 74 70 78 50 50Z"/><path d="M45 55L34 90L47 81L53 93L55 56Z"/></g><circle cx="50" cy="50" r="8" fill="#fff" ${ST}/>`),
+  A('crown', 'Mahkota', .24, [100, 70], `<path d="M10 60L6 16L30 38L50 6L70 38L94 16L90 60Z" fill="#f5e9b8" ${ST}/><path d="M10 50H90" fill="none" ${ST}/><g fill="#fff" ${ST}><circle cx="6" cy="14" r="4.5"/><circle cx="50" cy="5" r="4.5"/><circle cx="94" cy="14" r="4.5"/></g>`),
+  A('glasses', 'Kacamata', .4, [120, 50], `<g fill="rgba(255,255,255,.18)" stroke="${INK}" stroke-width="3.5"><circle cx="30" cy="27" r="18"/><circle cx="90" cy="27" r="18"/></g><path d="M48 24Q60 15 72 24M12 24L3 18M108 24L117 18" fill="none" stroke="${INK}" stroke-width="3.5" stroke-linecap="round"/>`),
+  A('heart', 'Hati', .14, [100, 100], `<path d="M50 88C10 58 6 28 28 20C40 16 48 24 50 32C52 24 60 16 72 20C94 28 90 58 50 88Z" fill="#f4cfd8" ${ST}/>`),
+  A('star', 'Bintang', .13, [100, 100], `<polygon points="${starPts(50, 53, 46, 20)}" fill="#f5e9b8" ${ST}/>`),
+  A('sparkle', 'Sparkle', .12, [100, 100], `<path d="M50 4Q54 46 96 50Q54 54 50 96Q46 54 4 50Q46 46 50 4Z" fill="#fff" ${ST}/><path d="M82 8Q83 16 91 17Q83 18 82 26Q81 18 73 17Q81 16 82 8Z" fill="#d9d0ee" stroke="${INK}" stroke-width="1.5" stroke-linejoin="round"/>`),
+  A('vintage', 'Stiker vintage', .2, [100, 100], `<circle cx="50" cy="50" r="46" fill="#f6f2ea" ${ST}/><circle cx="50" cy="50" r="39" fill="none" stroke="${INK}" stroke-width="1.2" stroke-dasharray="2 3"/><text x="50" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="9" letter-spacing="2.5" fill="${INK}">ARA_9</text><text x="50" y="57" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="20" fill="${INK}">Vintage</text><path d="M30 66H70" stroke="${INK}" stroke-width="1.2"/><text x="50" y="77" text-anchor="middle" font-family="Georgia,serif" font-size="6.5" letter-spacing="2" fill="${INK}">PHOTOBOOTH</text>`),
+  A('pin', 'Ornamen hijab', .14, [100, 100], `<g fill="#d9d0ee" ${ST}>${rot(6, a => `<ellipse cx="50" cy="21" rx="8" ry="13" transform="rotate(${a} 50 33)"/>`)}</g><circle cx="50" cy="33" r="6.5" fill="#fff" ${ST}/><path d="M50 47V62" fill="none" ${ST}/><circle cx="50" cy="73" r="9" fill="#fff" ${ST}/>`),
+  A('bag', 'Tas mini', .17, [100, 100], `<path d="M32 42C32 8 68 8 68 42" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/><path d="M16 42H84L92 90H8Z" fill="#f8d9c4" ${ST}/><path d="M16 42Q50 66 84 42" fill="none" ${ST}/><circle cx="50" cy="58" r="5" fill="#f5e9b8" ${ST}/>`),
+  A('shoe', 'Ornamen sepatu', .22, [120, 70], `<path d="M8 52C8 30 24 22 40 28C52 32 56 20 76 24C100 30 112 42 112 54C112 60 108 62 100 62H14C10 62 8 58 8 52Z" fill="#d9d0ee" ${ST}/><path d="M8 57H112" fill="none" ${ST}/><circle cx="80" cy="38" r="5" fill="#f5e9b8" ${ST}/>`),
+  A('crescent', 'Aksen muslim', .13, [100, 100], `<path d="M62 12A40 40 0 1 0 62 88A32 32 0 1 1 62 12Z" fill="#f5e9b8" ${ST}/><polygon points="${starPts(74, 34, 11, 4.6)}" fill="#fff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>`),
+  A('deco', 'Dekoratif pastel', .16, [100, 100], `<g fill="#cfe9dc" ${ST}>${rot(10, a => `<circle cx="50" cy="12" r="11" transform="rotate(${a} 50 50)"/>`)}</g><circle cx="50" cy="50" r="33" fill="#cfe9dc"/><circle cx="50" cy="50" r="14" fill="#fff" ${ST}/>`),
+  A('ara9', 'Stiker ARA_9', .28, [140, 56], `<rect x="2" y="2" width="136" height="52" rx="26" fill="${INK}"/><text x="70" y="38" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="28" letter-spacing="3" fill="#f6f2ea">ARA_9</text>`)
+];
+const AIX = Object.fromEntries(ASSETS.map((a, i) => [a.id, i]));
+
+/* ===== Frame ===== */
+const FR = [];
+const fr = (cat, id, name, o) => FR.push({ cat, id, name, bg: '#fff', ink: INK, acc: INK, shape: 'rect', bord: 'thin', ar: .75, pad: .03, ...o });
+const CATS = { classic: 'CLASSIC VINTAGE', pastel: 'PASTEL PINTEREST', shape: 'SHAPE FRAME', ara: 'ARA_9 SIGNATURE' };
+fr('classic', 'c-white', 'Photobooth putih', { bg: '#fffdf8' });
+fr('classic', 'c-bw', 'Hitam putih', { bg: '#111', ink: '#f6f2ea', acc: '#f6f2ea' });
+fr('classic', 'c-film', 'Film analog', { bg: '#161616', ink: '#f6f2ea', acc: '#f6f2ea', bord: 'film', pad: .075, sq: 1 });
+fr('classic', 'c-mag', 'Editorial majalah', { bg: '#f6f2ea', bord: 'double', mast: 1 });
+fr('classic', 'c-retro', 'Retro border tipis', { bg: '#efe8da', ink: '#3a342b', acc: '#3a342b', bord: 'inset' });
+fr('classic', 'c-print', 'Cetak vintage', { bg: '#f1e7d3', ink: '#5b4a36', acc: '#5b4a36', pad: .055, corners: 1, paper: 1 });
+[['p-pink', 'Pink pastel', '#f4cfd8', 'flowers'], ['p-lav', 'Lavender', '#d9d0ee', 'sparkle'], ['p-blue', 'Baby blue', '#cfe3f1', 'stars'],
+ ['p-mint', 'Mint', '#cfe9dc', 'dots'], ['p-butter', 'Butter yellow', '#f5e9b8', 'hearts'], ['p-cream', 'Cream', '#f7f0e1', ''],
+ ['p-peach', 'Soft peach', '#f8d9c4', 'bows']].forEach(([id, n, bg, m]) => fr('pastel', id, n, { bg, motif: m, pad: .035 }));
+fr('shape', 's-circle', 'Lingkaran', { bg: '#f6f2ea', shape: 'circle', ar: 1, pad: .05 });
+fr('shape', 's-heart', 'Love', { bg: '#f4cfd8', shape: 'heart', ar: 1, pad: .05 });
+fr('shape', 's-flower', 'Bunga', { bg: '#f5e9b8', shape: 'flower', ar: 1, pad: .05 });
+fr('shape', 's-oval', 'Oval', { bg: '#fffdf8', shape: 'oval', ar: 1.2, pad: .05 });
+fr('shape', 's-scallop', 'Bergelombang', { bg: '#cfe9dc', shape: 'scallop', pad: .05 });
+fr('shape', 's-arch', 'Arch', { bg: '#d9d0ee', shape: 'arch', ar: 1.2, pad: .05 });
+fr('shape', 's-notch', 'Sudut dekoratif', { bg: '#f6f2ea', shape: 'notch', pad: .05, bord: 'double' });
+fr('ara', 'a-sign', 'ARA_9 Signature', { bg: '#f6f2ea', bord: 'double', mast: 1 });
+fr('ara', 'a-edit', 'Editorial muslim', { bg: '#111', ink: '#f6f2ea', acc: '#f4cfd8', bord: 'inset', mast: 1 });
+fr('ara', 'a-floral', 'Floral vintage', { bg: '#f8e6ea', motif: 'flowers', pad: .04 });
+fr('ara', 'a-ribbon', 'Pita & bunga', { bg: '#f4cfd8', motif: 'ribbon', pad: .04, bord: 'double' });
+fr('ara', 'a-fashion', 'Fashion muslim', { bg: '#fffdf8', motif: 'fashion', bord: 'inset', pad: .035 });
+fr('ara', 'a-mono', 'Mono + pastel', { bg: '#fff', acc: '#f4cfd8' });
+const FRAMES = Object.fromEntries(FR.map(f => [f.id, f]));
+const MOTIFS = { flowers: ['flower', 'sparkle'], sparkle: ['sparkle', 'star'], stars: ['star', 'sparkle'], dots: ['deco', 'sparkle'],
+  hearts: ['heart', 'flower'], bows: ['bow', 'heart'], ribbon: ['bow', 'flower'], fashion: ['bag', 'shoe', 'pin', 'crescent'] };
+
+const video = $('#video');
+
+/* ---------- util ---------- */
+function toast(msg, err) {
+  const t = $('#toast'); t.textContent = msg; t.className = 'toast' + (err ? ' err' : ''); t.hidden = false;
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, err ? 7000 : 3200);
+}
+const cssFilter = f => {
+  const p = [];
+  if (f.b) p.push(`brightness(${f.b})`); if (f.c) p.push(`contrast(${f.c})`);
+  if (f.s != null) p.push(`saturate(${f.s})`); if (f.g) p.push(`grayscale(${f.g})`);
+  if (f.sep) p.push(`sepia(${f.sep})`); if (f.hue) p.push(`hue-rotate(${f.hue}deg)`);
+  return p.join(' ') || 'none';
+};
+let ac;
+function beep(f, d) {
+  if (S.muted) return;
+  try {
+    ac = ac || new (window.AudioContext || window.webkitAudioContext)(); ac.resume();
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.frequency.value = f; g.gain.setValueAtTime(.12, ac.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001, ac.currentTime + d);
+    o.connect(g).connect(ac.destination); o.start(); o.stop(ac.currentTime + d);
+  } catch (e) { /* suara opsional */ }
+}
+const loadAssets = () => Promise.all(ASSETS.map(a => new Promise(res => {
+  const im = new Image(); im.onload = () => { a.img = im; res(); }; im.onerror = () => { console.warn('Aset gagal dimuat:', a.id); res(); }; im.src = a.src;
+})));
+
+/* ---------- intro ---------- */
+function introInit() {
+  const el = $('#intro'); if (!el) return;
+  let seen = false; try { seen = sessionStorage.getItem('ara9intro') === '1'; } catch (e) { /* abaikan */ }
+  if (seen) { el.remove(); return; }
+  const done = () => {
+    if (el.dataset.done) return; el.dataset.done = 1;
+    try { sessionStorage.setItem('ara9intro', '1'); } catch (e) { /* abaikan */ }
+    el.classList.add('out'); setTimeout(() => el.remove(), 1000);
+  };
+  $('#skipIntro').onclick = done;
+  setTimeout(done, matchMedia('(prefers-reduced-motion:reduce)').matches ? 1200 : 3800);
+}
+
+/* ---------- editor hiasan (Pointer Events: sentuh, mouse, stylus) ---------- */
+const layer = $('#decoLayer'), ewrap = $('#ewrap');
+const ptrs = new Map(); let pinch = null, curDrag = null;
+const snap = () => { S.hist.push(JSON.stringify(S.decos)); if (S.hist.length > 40) S.hist.shift(); updateDecoUI(); };
+function invalidate() { S.ver++; S.final = null; upId++; $('#qrBox').hidden = true; }
+function undo() {
+  const h = S.hist.pop(); if (h == null) return;
+  S.decos = JSON.parse(h); if (!S.decos.some(d => d.id === S.sel)) S.sel = null; renderDecos(); invalidate();
+}
+function place(el, d) {
+  el.style.left = d.x * 100 + '%'; el.style.top = d.y * 100 + '%'; el.style.width = d.w * 100 + '%';
+  el.style.transform = `translate(-50%,-50%) rotate(${d.r}deg)`;
+}
+function track(el, e, move, end) {
+  el.setPointerCapture(e.pointerId); let fin = false;
+  const T = ['pointerup', 'pointercancel', 'lostpointercapture'];
+  const up = () => { if (fin) return; fin = true; el.removeEventListener('pointermove', move); T.forEach(t => el.removeEventListener(t, up)); end && end(); };
+  el.addEventListener('pointermove', move); T.forEach(t => el.addEventListener(t, up));
+}
+function startPinch() {
+  const d = S.decos.find(x => x.id === S.sel); if (!d) return;
+  const [a, b] = [...ptrs.values()]; if (curDrag) curDrag.dead = true; snap();
+  pinch = { d, w0: d.w, r0: d.r, d0: Math.hypot(a.x - b.x, a.y - b.y) || 1, a0: Math.atan2(b.y - a.y, b.x - a.x) };
+}
+function doPinch() {
+  const [a, b] = [...ptrs.values()]; if (!b || !pinch) return; const p = pinch;
+  p.d.w = clamp(p.w0 * Math.hypot(a.x - b.x, a.y - b.y) / p.d0, .05, 1.2);
+  p.d.r = p.r0 + (Math.atan2(b.y - a.y, b.x - a.x) - p.a0) * 180 / Math.PI;
+  place($(`.deco[data-id="${p.d.id}"]`), p.d); invalidate();
+}
+const ICON_X = '<svg viewBox="0 0 24 24" width="18" height="18"><path d="M7 7l10 10M17 7 7 17" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>';
+const ICON_H = '<svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 18 18 6M11 6h7v7M6 11v7h7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function renderDecos() {
+  layer.innerHTML = ''; ewrap.style.touchAction = S.decos.length ? 'none' : 'auto';
+  S.decos.forEach(d => {
+    const el = document.createElement('div'); el.className = 'deco' + (d.id === S.sel ? ' sel' : ''); el.dataset.id = d.id;
+    const a = ASSETS[d.i], im = new Image(); im.src = a.src; im.alt = a.l; el.append(im);
+    const x = document.createElement('button'); x.className = 'x'; x.innerHTML = ICON_X; x.setAttribute('aria-label', 'Hapus hiasan');
+    const h = document.createElement('span'); h.className = 'h'; h.innerHTML = ICON_H;
+    el.append(x, h); place(el, d);
+    x.addEventListener('pointerdown', e => e.stopPropagation());
+    x.addEventListener('click', () => removeDeco(d.id));
+    el.addEventListener('pointerdown', e => {
+      if (e.target.closest('.x,.h') || ptrs.size) return;
+      select(d.id); snap();
+      const r = layer.getBoundingClientRect(), ds = { sx: e.clientX, sy: e.clientY, x0: d.x, y0: d.y, dead: false }; curDrag = ds;
+      track(el, e, ev => {
+        if (pinch || ds.dead) return;
+        d.x = clamp(ds.x0 + (ev.clientX - ds.sx) / r.width, 0, 1); d.y = clamp(ds.y0 + (ev.clientY - ds.sy) / r.height, 0, 1);
+        place(el, d); invalidate();
+      });
+    });
+    h.addEventListener('pointerdown', e => {
+      e.stopPropagation(); e.preventDefault(); select(d.id); snap();
+      const r = layer.getBoundingClientRect(), cx = r.left + d.x * r.width, cy = r.top + d.y * r.height;
+      const d0 = Math.hypot(e.clientX - cx, e.clientY - cy) || 1, a0 = Math.atan2(e.clientY - cy, e.clientX - cx), w0 = d.w, r0 = d.r;
+      track(h, e, ev => {
+        d.w = clamp(w0 * Math.hypot(ev.clientX - cx, ev.clientY - cy) / d0, .05, 1.2);
+        d.r = r0 + (Math.atan2(ev.clientY - cy, ev.clientX - cx) - a0) * 180 / Math.PI; place(el, d); invalidate();
+      });
+    });
+    layer.append(el);
+  });
+  updateDecoUI();
+}
+function select(id) { S.sel = id; $$('.deco').forEach(e => e.classList.toggle('sel', +e.dataset.id === id)); updateDecoUI(); }
+function updateDecoUI() {
+  ['#btnSmall', '#btnBig', '#btnRotL', '#btnRotR', '#btnDel', '#btnFront', '#btnBack'].forEach(s => $(s).disabled = S.sel == null);
+  $('#btnClear').disabled = !S.decos.length; $('#btnUndo').disabled = !S.hist.length;
+}
+function addDeco(i) {
+  if (S.state !== 'result') return toast('Ambil foto dulu, lalu tambahkan aksesoris di halaman hasil.');
+  snap(); const n = S.decos.length % 4;
+  const d = { id: ++uid, i, x: clamp(.5 + (n - 1.5) * .08, 0, 1), y: clamp(.5 + (n - 1.5) * .08, 0, 1), w: ASSETS[i].w, r: 0 };
+  S.decos.push(d); S.sel = d.id; renderDecos(); invalidate();
+}
+function removeDeco(id) { snap(); S.decos = S.decos.filter(d => d.id !== id); if (S.sel === id) S.sel = null; renderDecos(); invalidate(); }
+function editSel(fn) { const d = S.decos.find(d => d.id === S.sel); if (!d) return; snap(); fn(d); place($(`.deco[data-id="${d.id}"]`), d); invalidate(); }
+function reorder(front) {
+  const k = S.decos.findIndex(d => d.id === S.sel); if (k < 0) return; snap();
+  const [d] = S.decos.splice(k, 1); front ? S.decos.push(d) : S.decos.unshift(d); renderDecos(); invalidate();
+}
+
+/* ---------- kamera ---------- */
+const OV = {
+  idle: ['Siap berfoto?', 'Tekan Mulai kamera. Browser akan meminta izin untuk memakai kamera.'],
+  loading: ['Menyalakan kamera…', 'Tunggu sebentar ya.'],
+  error: ['Kamera belum bisa dipakai', '']
+};
+function showRec() { $('#btnRecStop').hidden = !S.recording; $('#recBadge').hidden = !S.recording; }
+function setState(s, msg) {
+  S.state = s; document.body.dataset.state = s; if (s !== 'result') { upId++; $('#qrBox').hidden = true; }
+  $$('[data-states]').forEach(e => e.hidden = !e.dataset.states.split(' ').includes(s));
+  $('#btnSwitch').hidden = !(s === 'live' && S.devices.length > 1);
+  const ov = $('#overlay'); ov.hidden = !(s in OV); ov.dataset.k = s;
+  if (s in OV) { $('#ovTitle').textContent = OV[s][0]; $('#ovText').textContent = msg || OV[s][1]; }
+  $('#dots').hidden = !(s === 'counting' && LAYOUTS[S.layout].n > 1);
+  $('#livePanel').hidden = !['live', 'counting'].includes(s);
+  $('#vidBox').hidden = !(s === 'result' && S.video);
+  showRec(); sync();
+}
+function camError(e) {
+  const m = {
+    NotAllowedError: 'Izin kamera ditolak. Ketuk ikon gembok di address bar, izinkan kamera, lalu tekan Mulai kamera lagi.',
+    PermissionDeniedError: 'Izin kamera ditolak. Ketuk ikon gembok di address bar, izinkan kamera, lalu coba lagi.',
+    NotFoundError: 'Tidak ada kamera yang terdeteksi di perangkat ini.',
+    NotReadableError: 'Kamera sedang dipakai aplikasi lain. Tutup aplikasi itu lalu coba lagi.',
+    SecurityError: 'Kamera diblokir oleh keamanan browser. Buka halaman ini lewat HTTPS.'
+  };
+  return m[e.name] || `Kamera tidak bisa dinyalakan (${e.name || 'error'}). Coba muat ulang halaman.`;
+}
+function stopStream() { if (S.stream) S.stream.getTracks().forEach(t => t.stop()); S.stream = null; video.srcObject = null; }
+async function startCam(devId) {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    return setState('error', window.isSecureContext ? 'Browser ini tidak mendukung akses kamera.' : 'Kamera hanya bisa dipakai lewat HTTPS. Buka halaman ini lewat alamat https.');
+  }
+  setState('loading'); stopStream();
+  try {
+    const v = { width: { ideal: 1920 }, height: { ideal: 1080 } };
+    if (devId) v.deviceId = { exact: devId }; else v.facingMode = { ideal: S.facing };
+    let st;
+    try { st = await navigator.mediaDevices.getUserMedia({ video: v, audio: false }); }
+    catch (e) { if (e.name === 'OverconstrainedError') st = await navigator.mediaDevices.getUserMedia({ video: true, audio: false }); else throw e; }
+    S.stream = st; video.srcObject = st;
+    if (video.readyState < 1) await new Promise(r => video.addEventListener('loadedmetadata', r, { once: true }));
+    await video.play().catch(() => {});
+    const set = st.getVideoTracks()[0].getSettings();
+    const all = await navigator.mediaDevices.enumerateDevices();
+    S.devices = all.filter(d => d.kind === 'videoinput');
+    S.devIdx = Math.max(0, S.devices.findIndex(d => d.deviceId === set.deviceId));
+    setState('live');
+  } catch (e) { stopStream(); setState('error', camError(e)); }
+}
+function switchCam() {
+  if (S.devices.length > 1 && S.devices[0].label) { S.devIdx = (S.devIdx + 1) % S.devices.length; startCam(S.devices[S.devIdx].deviceId); }
+  else { S.facing = S.facing === 'user' ? 'environment' : 'user'; startCam(); }
+}
+
+/* ---------- perekaman video ---------- */
+const fmtT = ms => { const s = Math.floor(ms / 1000); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
+async function recStart() {
+  if (!window.MediaRecorder || !S.stream) return false;
+  const mime = ['video/mp4;codecs=avc1.42E01E,mp4a.40.2', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm']
+    .find(t => MediaRecorder.isTypeSupported(t));
+  if (!mime) return false;
+  const tracks = [...S.stream.getVideoTracks()]; let mic = null;
+  if (S.audio) {
+    try { mic = await navigator.mediaDevices.getUserMedia({ audio: true }); tracks.push(...mic.getAudioTracks()); }
+    catch (e) { toast('Mikrofon tidak tersedia atau ditolak. Video direkam tanpa suara.'); }
+  }
+  try {
+    const r = { chunks: [], mime: mime.split(';')[0], mic, err: false, t0: Date.now() };
+    r.mr = new MediaRecorder(new MediaStream(tracks), { mimeType: mime, videoBitsPerSecond: 2500000 });
+    r.mr.ondataavailable = e => { if (e.data && e.data.size) r.chunks.push(e.data); };
+    r.mr.onerror = () => { r.err = true; };
+    r.done = new Promise(res => { r.mr.onstop = res; });
+    r.mr.start(1000);
+    r.tm = setInterval(() => { $('#recTime').textContent = fmtT(Date.now() - r.t0); }, 500);
+    $('#recTime').textContent = '00:00'; S.rec = r; S.recording = true; showRec(); return true;
+  } catch (e) { mic && mic.getTracks().forEach(t => t.stop()); return false; }
+}
+async function recStop() {
+  const r = S.rec; if (!r) return null;
+  if (r.mr.state !== 'inactive') { try { r.mr.stop(); } catch (e) { /* abaikan */ } }
+  await r.done; clearInterval(r.tm); S.recording = false; S.rec = null; showRec();
+  r.mic && r.mic.getTracks().forEach(t => t.stop());
+  const blob = new Blob(r.chunks, { type: r.mime });
+  if (!blob.size || r.err) return null;
+  return { blob, mime: r.mime, ext: r.mime.includes('mp4') ? 'mp4' : 'webm', url: URL.createObjectURL(blob) };
+}
+function revokeVid() { if (S.video) URL.revokeObjectURL(S.video.url); S.video = null; }
+async function finishRec() {
+  if (!S.rec) return; const v = await recStop();
+  if (v) S.video = v; else toast('Video gagal dibuat (rekaman kosong). Foto tetap tersimpan.', 1);
+}
+
+/* ---------- pengambilan foto ---------- */
+function grab(maxW) {
+  const vw = video.videoWidth, vh = video.videoHeight; if (!vw) throw new Error('Kamera belum siap');
+  let sw = vw, sh = vh; if (vw / vh > 4 / 3) sw = vh * 4 / 3; else sh = vw * 3 / 4;
+  const k = Math.min(1, (maxW || 1600) / sw), c = document.createElement('canvas');
+  c.width = Math.round(sw * k); c.height = Math.round(sh * k);
+  c.getContext('2d').drawImage(video, (vw - sw) / 2, (vh - sh) / 2, sw, sh, 0, 0, c.width, c.height);
+  c._id = ++pid; return c;
+}
+async function countdown(sec, id) {
+  const el = $('#count');
+  for (let i = sec; i > 0; i--) {
+    if (S.run !== id) return false;
+    el.textContent = i; el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); beep(660, .15); await sleep(1000);
+  }
+  el.textContent = ''; return S.run === id;
+}
+async function shoot() {
+  const id = ++S.run, n = LAYOUTS[S.layout].n; S.photos = []; S.final = null; revokeVid(); S.hist = []; S.up = null;
+  setState('counting'); beep(440, .05);
+  if (S.wantVideo && !await recStart()) toast('Perekaman video tidak bisa dimulai di perangkat ini. Sesi lanjut sebagai foto saja.', 1);
+  try {
+    for (let i = 0; i < n; i++) {
+      $('#dots').textContent = `Foto ${i + 1} dari ${n}`;
+      if (!await countdown(S.timer, id)) return;
+      const f = $('#flash'); f.classList.remove('go'); void f.offsetWidth; f.classList.add('go');
+      S.photos.push(grab()); beep(990, .25);
+      if (i < n - 1) { await sleep(1300); if (S.run !== id) return; }
+    }
+    await finishRec();
+    stopStream(); // kamera tidak diperlukan lagi
+    if ($('#resVideo')) { $('#resVideo').src = S.video ? S.video.url : ''; if (S.video) { $('#vidDl').href = S.video.url; $('#vidDl').download = 'ara9-video.' + S.video.ext; } }
+    setState('result'); renderResult(); renderDecos();
+  } catch (e) {
+    if (S.rec) await recStop().catch(() => {});
+    toast('Gagal mengambil foto: ' + e.message, 1); setState(S.stream ? 'live' : 'idle');
+  }
+}
+async function cancelShoot() { S.run++; S.photos = []; $('#count').textContent = ''; if (S.rec) await recStop().catch(() => {}); setState('live'); }
+
+/* ---------- Canvas: filter, frame, bentuk, hiasan ---------- */
+const FILTER_OK = (() => {
+  try {
+    const a = document.createElement('canvas'); a.width = a.height = 1; const g = a.getContext('2d');
+    if (!('filter' in g)) return false;
+    g.fillStyle = '#f00'; g.fillRect(0, 0, 1, 1);
+    const b = document.createElement('canvas'); b.width = b.height = 1; const h = b.getContext('2d');
+    h.filter = 'grayscale(1)'; h.drawImage(a, 0, 0); const p = h.getImageData(0, 0, 1, 1).data;
+    return p[0] === p[1];
+  } catch (e) { return false; }
+})();
+function pixelFilter(g, w, h, f) {
+  const im = g.getImageData(0, 0, w, h), d = im.data;
+  for (let i = 0; i < d.length; i += 4) {
+    let r = d[i], gr = d[i + 1], b = d[i + 2];
+    if (f.b) { r *= f.b; gr *= f.b; b *= f.b; }
+    if (f.c) { r = (r - 128) * f.c + 128; gr = (gr - 128) * f.c + 128; b = (b - 128) * f.c + 128; }
+    const l = .299 * r + .587 * gr + .114 * b;
+    if (f.s != null) { r = l + (r - l) * f.s; gr = l + (gr - l) * f.s; b = l + (b - l) * f.s; }
+    if (f.g) { r += (l - r) * f.g; gr += (l - gr) * f.g; b += (l - b) * f.g; }
+    if (f.sep) {
+      const sr = .393 * r + .769 * gr + .189 * b, sg = .349 * r + .686 * gr + .168 * b, sb = .272 * r + .534 * gr + .131 * b;
+      r += (sr - r) * f.sep; gr += (sg - gr) * f.sep; b += (sb - b) * f.sep;
+    }
+    d[i] = r; d[i + 1] = gr; d[i + 2] = b;
+  }
+  g.putImageData(im, 0, 0);
+}
+function drawPhoto(x, src, px, py, w, h) { // cover-crop tanpa distorsi
+  const f = FILTERS[S.filter], sa = src.width / src.height, da = w / h; let sw = src.width, sh = src.height, sx = 0, sy = 0;
+  if (da < sa) { sw = sh * da; sx = (src.width - sw) / 2; } else { sh = sw / da; sy = (src.height - sh) / 2; }
+  x.save(); x.translate(S.exMirror ? px + w : px, py); if (S.exMirror) x.scale(-1, 1);
+  if (FILTER_OK) { x.filter = cssFilter(f); x.drawImage(src, sx, sy, sw, sh, 0, 0, w, h); }
+  else {
+    const t = document.createElement('canvas'); t.width = Math.max(1, Math.round(w)); t.height = Math.max(1, Math.round(h));
+    const g = t.getContext('2d'); g.drawImage(src, sx, sy, sw, sh, 0, 0, t.width, t.height); pixelFilter(g, t.width, t.height, f); x.drawImage(t, 0, 0, w, h);
+  }
+  x.restore();
+}
+function rr(x, a, b, w, h, r) {
+  r = Math.max(0, Math.min(r, w / 2, h / 2)); x.beginPath(); x.moveTo(a + r, b);
+  x.arcTo(a + w, b, a + w, b + h, r); x.arcTo(a + w, b + h, a, b + h, r); x.arcTo(a, b + h, a, b, r); x.arcTo(a, b, a + w, b, r); x.closePath();
+}
+function shapePath(c, k, x, y, w, h, r) {
+  const TAU = Math.PI * 2; c.beginPath();
+  if (k === 'circle' || k === 'oval') c.ellipse(x + w / 2, y + h / 2, w / 2, h / 2, 0, 0, TAU);
+  else if (k === 'heart') {
+    const P = (a, b) => [x + a * w, y + b * h];
+    c.moveTo(...P(.5, .93)); c.bezierCurveTo(...P(.05, .62), ...P(-.03, .24), ...P(.22, .12));
+    c.bezierCurveTo(...P(.38, .04), ...P(.5, .16), ...P(.5, .28)); c.bezierCurveTo(...P(.5, .16), ...P(.62, .04), ...P(.78, .12));
+    c.bezierCurveTo(...P(1.03, .24), ...P(.95, .62), ...P(.5, .93)); c.closePath();
+  } else if (k === 'flower') {
+    const cx = x + w / 2, cy = y + h / 2, pr = w * .19, d = w * .31;
+    for (let i = 0; i < 8; i++) { const a = i * Math.PI / 4, px = cx + d * Math.cos(a), py = cy + d * Math.sin(a); c.moveTo(px + pr, py); c.arc(px, py, pr, 0, TAU); }
+    c.moveTo(cx + w * .34, cy); c.arc(cx, cy, w * .34, 0, TAU);
+  } else if (k === 'scallop') {
+    const b = Math.min(w, h) * .045; c.rect(x + b, y + b, w - 2 * b, h - 2 * b);
+    const nx = Math.round((w - 2 * b) / (b * 1.8)), ny = Math.round((h - 2 * b) / (b * 1.8));
+    for (let i = 0; i <= nx; i++) { const px = x + b + i * (w - 2 * b) / nx; [y + b, y + h - b].forEach(py => { c.moveTo(px + b, py); c.arc(px, py, b, 0, TAU); }); }
+    for (let j = 0; j <= ny; j++) { const py = y + b + j * (h - 2 * b) / ny; [x + b, x + w - b].forEach(px => { c.moveTo(px + b, py); c.arc(px, py, b, 0, TAU); }); }
+  } else if (k === 'arch') {
+    c.moveTo(x, y + h); c.lineTo(x, y + w / 2); c.arc(x + w / 2, y + w / 2, w / 2, Math.PI, 0); c.lineTo(x + w, y + h); c.closePath();
+  } else if (k === 'notch') {
+    const q = Math.min(w, h) * .1, P = Math.PI;
+    c.moveTo(x + q, y); c.lineTo(x + w - q, y); c.arc(x + w, y, q, P, P / 2, true); c.lineTo(x + w, y + h - q);
+    c.arc(x + w, y + h, q, 3 * P / 2, P, true); c.lineTo(x + q, y + h); c.arc(x, y + h, q, 0, 3 * P / 2, true);
+    c.lineTo(x, y + q); c.arc(x, y, q, P / 2, 0, true); c.closePath();
+  } else rr(c, x, y, w, h, r);
+}
+const OUTLINE = ['rect', 'circle', 'oval', 'heart', 'arch', 'notch'];
+function photoCorners(x, q, F, col) {
+  const s = .04 * F; x.fillStyle = col; x.globalAlpha = .85;
+  [[q.x, q.y, 1, 1], [q.x + q.w, q.y, -1, 1], [q.x, q.y + q.h, 1, -1], [q.x + q.w, q.y + q.h, -1, -1]].forEach(([a, b, dx, dy]) => {
+    x.beginPath(); x.moveTo(a, b); x.lineTo(a + dx * s, b); x.lineTo(a, b + dy * s); x.closePath(); x.fill();
+  }); x.globalAlpha = 1;
+}
+function speckle(x, F, H, col) {
+  let s = 7; const r = () => (s = s * 16807 % 2147483647) / 2147483647;
+  x.fillStyle = col; x.globalAlpha = .07;
+  for (let i = 0, m = Math.round(F * H / 5000); i < m; i++) x.fillRect(r() * F, r() * H, 1 + r() * 2, 1 + r() * 2);
+  x.globalAlpha = 1;
+}
+function compose(ph, o = {}) {
+  const f = FRAMES[o.frame || S.frame], L = LAYOUTS[o.layout || S.layout], n = L.n, cols = L.cols, rows = Math.ceil(n / cols);
+  const F = o.F || (n === 1 ? 1600 : 1200), pad = F * f.pad, gap = F * .025, mast = n > 1 || f.mast;
+  const head = mast ? F * (f.mast ? .17 : .13) : 0, foot = F * .1;
+  const pw = F - 2 * pad, cw = (pw - (cols - 1) * gap) / cols, ch = cw * f.ar;
+  const cells = Array.from({ length: n }, (_, i) => ({ x: pad + (i % cols) * (cw + gap), y: pad + head + Math.floor(i / cols) * (ch + gap), w: cw, h: ch }));
+  const last = cells[n - 1], H = Math.round(last.y + last.h + foot);
+  const c = document.createElement('canvas'); c.width = F; c.height = H;
+  const x = c.getContext('2d'), R = f.sq ? 0 : .025 * F, t = Math.max(1, .005 * F);
+  x.save(); rr(x, 0, 0, F, H, R); x.clip(); x.fillStyle = f.bg; x.fillRect(0, 0, F, H);
+  if (f.paper) speckle(x, F, H, f.ink);
+  const mk = MOTIFS[f.motif];
+  if (mk) {
+    const sp = [[.1, H - foot / 2], [.9, H - foot / 2]]; if (head) sp.unshift([.1, pad + head * .45], [.9, pad + head * .45]);
+    sp.forEach(([px, py], i) => {
+      const a = ASSETS[AIX[mk[i % mk.length]]]; if (!a.img) return;
+      const w = .075 * F * (a.ar < .8 ? 1.3 : 1), h = w * a.ar;
+      x.save(); x.translate(px * F, py); x.rotate((i % 2 ? 1 : -1) * .2); x.drawImage(a.img, -w / 2, -h / 2, w, h); x.restore();
+    });
+  }
+  cells.forEach((q, i) => {
+    x.save(); shapePath(x, f.shape, q.x, q.y, q.w, q.h, .015 * F); x.clip(); drawPhoto(x, ph[i], q.x, q.y, q.w, q.h); x.restore();
+    if (OUTLINE.includes(f.shape)) { x.save(); shapePath(x, f.shape, q.x, q.y, q.w, q.h, .015 * F); x.strokeStyle = f.ink; x.lineWidth = t * .8; x.stroke(); x.restore(); }
+    if (f.corners) photoCorners(x, q, F, f.ink);
+  });
+  x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = f.ink;
+  if (head) {
+    x.font = `italic 600 ${(f.mast ? .1 : .065) * F}px "Cormorant Garamond",Georgia,serif`; x.fillText('ARA_9', F / 2, pad + head * (f.mast ? .42 : .4));
+    const ly = pad + head * (f.mast ? .8 : .74);
+    if (f.mast) { x.save(); if ('letterSpacing' in x) x.letterSpacing = (.008 * F) + 'px'; x.font = `500 ${.02 * F}px Jost,system-ui,sans-serif`; x.fillText('PHOTOBHOOTH VINTAGE', F / 2, ly); x.restore(); }
+    else {
+      x.fillStyle = f.acc; x.fillRect(F / 2 - .17 * F, ly, .125 * F, t); x.fillRect(F / 2 + .045 * F, ly, .125 * F, t);
+      x.save(); x.translate(F / 2, ly + t / 2); x.rotate(Math.PI / 4); x.fillRect(-.007 * F, -.007 * F, .014 * F, .014 * F); x.restore();
+    }
+  }
+  x.save(); x.fillStyle = f.ink; if ('letterSpacing' in x) x.letterSpacing = (.004 * F) + 'px';
+  x.font = `500 ${.026 * F}px Jost,system-ui,sans-serif`; x.fillText(CAP, F / 2, H - foot / 2); x.restore();
+  x.strokeStyle = f.ink; const ins = F * .012;
+  const box = (d, lw) => { x.lineWidth = lw; rr(x, d, d, F - 2 * d, H - 2 * d, Math.max(0, R - d)); x.stroke(); };
+  if (f.bord === 'thin') box(ins, t);
+  if (f.bord === 'double') { box(ins, t); box(ins + t * 3, t * .7); }
+  if (f.bord === 'inset') { box(ins * .6, t * 2); box(ins * .6 + t * 3.5, t * .6); }
+  if (f.bord === 'film') {
+    x.fillStyle = f.ink; const hw = pad * .38, hh = pad * .55, st = pad * 1.15;
+    for (let y = st / 2; y < H; y += st) [pad / 2, F - pad / 2].forEach(cx => { rr(x, cx - hw / 2, y - hh / 2, hw, hh, hw * .3); x.fill(); });
+  }
+  x.restore();
+  if (o.decos !== false) S.decos.forEach(d => {
+    const a = ASSETS[d.i]; if (!a.img) return; const dw = d.w * F, dh = dw * a.ar;
+    x.save(); x.translate(d.x * F, d.y * H); x.rotate(d.r * Math.PI / 180); x.drawImage(a.img, -dw / 2, -dh / 2, dw, dh); x.restore();
+  });
+  return c;
+}
+function renderResult() {
+  try {
+    const c = compose(S.photos, { F: 720, decos: false }), rc = $('#resultCanvas');
+    rc.width = c.width; rc.height = c.height; rc.getContext('2d').drawImage(c, 0, 0);
+  } catch (e) { toast('Gagal menyusun hasil foto: ' + e.message, 1); }
+}
+const finalCanvas = () => S.final || (S.final = compose(S.photos, {}));
+
+/* ---------- QR (mode byte, koreksi level M, versi 1-10) ---------- */
+function qrEncode(text) {
+  const data = [...new TextEncoder().encode(text)];
+  const ECC = [10, 16, 26, 18, 24, 16, 18, 22, 22, 26], BLK = [1, 1, 1, 2, 2, 4, 4, 4, 5, 5];
+  const rawCw = v => { let r = (16 * v + 128) * v + 64; if (v >= 2) { const a = Math.floor(v / 7) + 2; r -= (25 * a - 10) * a - 55; if (v >= 7) r -= 36; } return r >> 3; };
+  let ver, cap;
+  for (ver = 1; ver <= 10; ver++) {
+    cap = rawCw(ver) - ECC[ver - 1] * BLK[ver - 1];
+    if (4 + (ver <= 9 ? 8 : 16) + data.length * 8 <= cap * 8) break;
+  }
+  if (ver > 10) throw new Error('Link terlalu panjang untuk QR');
+  const bits = [], put = (v, n) => { for (let i = n - 1; i >= 0; i--) bits.push((v >>> i) & 1); };
+  put(4, 4); put(data.length, ver <= 9 ? 8 : 16); data.forEach(b => put(b, 8));
+  put(0, Math.min(4, cap * 8 - bits.length)); while (bits.length % 8) bits.push(0);
+  for (let p = 0xEC; bits.length < cap * 8; p ^= 0xEC ^ 0x11) put(p, 8);
+  const cw = []; for (let i = 0; i < bits.length; i += 8) cw.push(parseInt(bits.slice(i, i + 8).join(''), 2));
+  const mul = (x, y) => { let z = 0; for (let i = 7; i >= 0; i--) { z = (z << 1) ^ ((z >>> 7) * 0x11D); z ^= ((y >>> i) & 1) * x; } return z; };
+  const gen = deg => { const r = Array(deg).fill(0); r[deg - 1] = 1; let root = 1; for (let i = 0; i < deg; i++) { for (let j = 0; j < deg; j++) { r[j] = mul(r[j], root); if (j + 1 < deg) r[j] ^= r[j + 1]; } root = mul(root, 2); } return r; };
+  const rem = (d, g) => { const r = g.map(() => 0); for (const b of d) { const f = b ^ r.shift(); r.push(0); g.forEach((c, i) => r[i] ^= mul(c, f)); } return r; };
+  const nb = BLK[ver - 1], el = ECC[ver - 1], raw = rawCw(ver), ns = nb - raw % nb, sl = Math.floor(raw / nb), g = gen(el), blocks = [];
+  for (let i = 0, k = 0; i < nb; i++) {
+    const len = sl - el + (i < ns ? 0 : 1), d = cw.slice(k, k + len); k += len;
+    const e = rem(d, g); if (i < ns) d.push(0); blocks.push(d.concat(e));
+  }
+  const all = [];
+  for (let i = 0; i < blocks[0].length; i++) blocks.forEach((b, j) => { if (i !== sl - el || j >= ns) all.push(b[i]); });
+
+  const n = ver * 4 + 17, m = Array.from({ length: n }, () => Array(n).fill(false)), fn = Array.from({ length: n }, () => Array(n).fill(false));
+  const setF = (x, y, v) => { m[y][x] = v; fn[y][x] = true; }, bit = (x, i) => ((x >>> i) & 1) !== 0;
+  for (let i = 0; i < n; i++) { setF(6, i, i % 2 === 0); setF(i, 6, i % 2 === 0); }
+  [[3, 3], [n - 4, 3], [3, n - 4]].forEach(([cx, cy]) => {
+    for (let dy = -4; dy <= 4; dy++) for (let dx = -4; dx <= 4; dx++) {
+      const d = Math.max(Math.abs(dx), Math.abs(dy)), x = cx + dx, y = cy + dy;
+      if (x >= 0 && x < n && y >= 0 && y < n) setF(x, y, d !== 2 && d !== 4);
+    }
+  });
+  if (ver > 1) {
+    const na = Math.floor(ver / 7) + 2, step = Math.ceil((ver * 4 + 4) / (na * 2 - 2)) * 2, pos = [6];
+    for (let p = n - 7; pos.length < na; p -= step) pos.splice(1, 0, p);
+    pos.forEach((py, i) => pos.forEach((px, j) => {
+      if ((i === 0 && j === 0) || (i === 0 && j === na - 1) || (i === na - 1 && j === 0)) return;
+      for (let dy = -2; dy <= 2; dy++) for (let dx = -2; dx <= 2; dx++) setF(px + dx, py + dy, Math.max(Math.abs(dx), Math.abs(dy)) !== 1);
+    }));
+  }
+  const fmt = mask => {
+    const d = mask; let r = d; for (let i = 0; i < 10; i++) r = (r << 1) ^ ((r >>> 9) * 0x537);
+    const b = ((d << 10) | r) ^ 0x5412;
+    for (let i = 0; i <= 5; i++) setF(8, i, bit(b, i)); setF(8, 7, bit(b, 6)); setF(8, 8, bit(b, 7)); setF(7, 8, bit(b, 8));
+    for (let i = 9; i < 15; i++) setF(14 - i, 8, bit(b, i));
+    for (let i = 0; i < 8; i++) setF(n - 1 - i, 8, bit(b, i));
+    for (let i = 8; i < 15; i++) setF(8, n - 15 + i, bit(b, i));
+    setF(8, n - 8, true);
+  };
+  fmt(0);
+  if (ver >= 7) {
+    let r = ver; for (let i = 0; i < 12; i++) r = (r << 1) ^ ((r >>> 11) * 0x1F25);
+    const b = (ver << 12) | r;
+    for (let i = 0; i < 18; i++) { const a = n - 11 + i % 3, c = Math.floor(i / 3); setF(a, c, bit(b, i)); setF(c, a, bit(b, i)); }
+  }
+  let k = 0;
+  for (let right = n - 1; right >= 1; right -= 2) {
+    if (right === 6) right = 5;
+    for (let v = 0; v < n; v++) for (let j = 0; j < 2; j++) {
+      const x = right - j, y = ((right + 1) & 2) === 0 ? n - 1 - v : v;
+      if (!fn[y][x] && k < all.length * 8) { m[y][x] = bit(all[k >>> 3], 7 - (k & 7)); k++; }
+    }
+  }
+  const inv = [(x, y) => (x + y) % 2 === 0, (x, y) => y % 2 === 0, (x, y) => x % 3 === 0, (x, y) => (x + y) % 3 === 0,
+    (x, y) => (Math.floor(x / 3) + Math.floor(y / 2)) % 2 === 0, (x, y) => x * y % 2 + x * y % 3 === 0,
+    (x, y) => (x * y % 2 + x * y % 3) % 2 === 0, (x, y) => ((x + y) % 2 + x * y % 3) % 2 === 0];
+  const apply = mk => { for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) if (!fn[y][x] && inv[mk](x, y)) m[y][x] = !m[y][x]; };
+  const penalty = () => {
+    let p = 0;
+    const scan = get => { for (let a = 0; a < n; a++) {
+      const s = []; for (let b = 0; b < n; b++) s.push(get(a, b) ? 1 : 0);
+      let run = 1; for (let b = 1; b < n; b++) { if (s[b] === s[b - 1]) { run++; if (run === 5) p += 3; else if (run > 5) p++; } else run = 1; }
+      const t = s.join(''); ['10111010000', '00001011101'].forEach(q => { let i = -1; while ((i = t.indexOf(q, i + 1)) >= 0) p += 40; });
+    } };
+    scan((a, b) => m[a][b]); scan((a, b) => m[b][a]);
+    for (let y = 0; y < n - 1; y++) for (let x = 0; x < n - 1; x++) { const c = m[y][x]; if (c === m[y][x + 1] && c === m[y + 1][x] && c === m[y + 1][x + 1]) p += 3; }
+    let dark = 0; m.forEach(r => r.forEach(c => { if (c) dark++; }));
+    return p + Math.max(0, Math.ceil(Math.abs(dark * 20 - n * n * 10) / (n * n)) - 1) * 10;
+  };
+  let best = 0, bp = Infinity;
+  for (let mk = 0; mk < 8; mk++) { apply(mk); fmt(mk); const p = penalty(); if (p < bp) { bp = p; best = mk; } apply(mk); }
+  apply(best); fmt(best);
+  return m;
+}
+
+function drawQR(text) {
+  const m = qrEncode(text), n = m.length, k = Math.max(3, Math.floor(280 / (n + 8))), c = $('#qrCanvas');
+  c.width = c.height = (n + 8) * k; const g = c.getContext('2d');
+  g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.fillStyle = '#111';
+  m.forEach((row, y) => row.forEach((v, x) => { if (v) g.fillRect((x + 4) * k, (y + 4) * k, k, k); }));
+}
+function setQr(state, text) {
+  const st = $('#qrStatus'); st.hidden = state === 'done'; st.textContent = state === 'done' ? '' : (text || 'Menyiapkan QR…');
+  st.classList.toggle('err', state === 'error');
+  $('#qrCanvas').hidden = state !== 'done'; $('#qrActions').hidden = state !== 'done'; $('#qrHint').hidden = state !== 'done';
+  $('#btnQrRetry').hidden = state !== 'error'; $('#qrBox').classList.toggle('busy', state === 'loading');
+  if (state === 'done') { $('#qrLink').href = text; $('#qrLink').textContent = text.replace('https://', ''); }
+}
+
+/* ---------- Supabase: Storage (private) + Database ---------- */
+async function sbOK(url, init, timeout = 60000) {
+  const go = async bearer => {
+    const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), timeout);
+    try { return await fetch(url, { ...init, headers: { apikey: SB_KEY, ...init.headers, ...(bearer ? { Authorization: 'Bearer ' + SB_KEY } : {}) }, signal: ctl.signal }); }
+    finally { clearTimeout(t); }
+  };
+  let r = await go(false); if (r.status === 401) r = await go(true);
+  if (!r.ok) {
+    let m = ''; try { m = (await r.json()).message || ''; } catch (e) { /* abaikan */ }
+    const er = new Error(`${r.status === 404 ? 'Bucket/tabel belum dibuat: jalankan supabase-setup.sql di Supabase. ' : ''}Gagal (kode ${r.status}). ${m}`.trim()); er.status = r.status; throw er;
+  }
+  return r;
+}
+async function retry(fn, id) {
+  for (let i = 0; ; i++) {
+    try { return await fn(); }
+    catch (e) { if (i >= 2 || id !== upId || (e.status >= 400 && e.status < 500 && e.status !== 408 && e.status !== 429)) throw e; await sleep(1200 * (i + 1)); }
+  }
+}
+const putObject = (path, blob, type, to) => sbOK(`${SB_URL}/storage/v1/object/${SB_BUCKET}/${path}`, { method: 'POST', headers: { 'Content-Type': type }, body: blob }, to);
+const hex = n => [...crypto.getRandomValues(new Uint8Array(n))].map(b => b.toString(16).padStart(2, '0')).join('');
+function publicBase() {
+  if (PUBLIC_BASE_URL) return PUBLIC_BASE_URL;
+  const l = location;
+  if (l.protocol !== 'https:' || /^(localhost|127\.|10\.|192\.168\.|0\.0\.0\.0)/.test(l.hostname)) return null;
+  return l.origin + l.pathname;
+}
+async function startUpload() {
+  const id = ++upId, ver = S.ver, base = publicBase();
+  if (!S.up || S.up.ver !== ver) S.up = { ver, sid: crypto.randomUUID(), tok: hex(16), photo: false, video: false, row: false };
+  const u = S.up, dir = `${u.sid}/${u.tok}`; setQr('loading', 'Menyiapkan hasil…');
+  try {
+    if (!S.photos.length) throw new Error('Hasil foto belum siap');
+    if (!u.photo) {
+      setQr('loading', 'Mengunggah foto…');
+      const src = finalCanvas(), b = document.createElement('canvas'); b.width = src.width; b.height = src.height;
+      const g = b.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, b.width, b.height); g.drawImage(src, 0, 0);
+      const blob = await new Promise((res, rej) => b.toBlob(x => x ? res(x) : rej(new Error('Gambar kosong')), 'image/jpeg', .92));
+      await retry(() => putObject(`${dir}/foto.jpg`, blob, 'image/jpeg'), id); if (id !== upId) return; u.photo = true;
+    }
+    if (S.video && !u.video) {
+      if (S.video.blob.size > 50 * 1024 * 1024) throw new Error('Video lebih dari 50 MB sehingga tidak bisa diunggah. Foto tetap bisa dibagikan lewat QR setelah video dilewati (tekan Download video untuk menyimpannya).');
+      setQr('loading', 'Mengunggah video… (bisa beberapa saat)');
+      await retry(() => putObject(`${dir}/video.${S.video.ext}`, S.video.blob, S.video.mime, 180000), id); if (id !== upId) return; u.video = true;
+    }
+    if (!u.row) {
+      setQr('loading', 'Menyimpan data sesi…');
+      const row = { id: u.sid, token: u.tok, layout: S.layout, frame: S.frame, photo_path: `${dir}/foto.jpg`, video_path: S.video ? `${dir}/video.${S.video.ext}` : null,
+        status: 'ready', expires_at: new Date(Date.now() + RETENTION_DAYS * 864e5).toISOString() };
+      await retry(() => sbOK(`${SB_URL}/rest/v1/photobooth_sessions`, { method: 'POST', headers: { 'Content-Type': 'application/json', Prefer: 'return=minimal' }, body: JSON.stringify(row) }), id);
+      if (id !== upId) return; u.row = true;
+    }
+    // Ada alamat publik: QR ke halaman hasil (foto + video). Tidak ada (lokal/file): QR langsung ke file foto di Supabase.
+    const url = base ? `${base}?s=${u.sid}&t=${u.tok}` : await rvSign(`${dir}/foto.jpg`, 604800);
+    if (!base && S.video) toast('Mode tanpa hosting: QR hanya membuka foto. Video disimpan lewat tombol Download video.');
+    S.qrUrl = url; S.qrVer = ver; drawQR(url); setQr('done', url);
+  } catch (e) {
+    if (id !== upId) return;
+    const off = e.name === 'AbortError' || e instanceof TypeError;
+    setQr('error', off ? 'Tidak bisa terhubung ke internet atau koneksi terputus. Periksa koneksi lalu coba lagi. Tombol Download Foto tetap bisa dipakai.' : e.message);
+  }
+}
+
+/* ---------- hasil live ---------- */
+let liveT = 0, blank = null, prevBlank = null;
+function renderLive() {
+  const n = LAYOUTS[S.layout].n, arr = [];
+  if (!blank) { blank = document.createElement('canvas'); blank.width = 480; blank.height = 360; const g = blank.getContext('2d'); g.fillStyle = '#e4ded1'; g.fillRect(0, 0, 480, 360); }
+  for (let i = 0; i < n; i++) {
+    if (i < S.photos.length) arr.push(S.photos[i]);
+    else if (i === S.photos.length && video.videoWidth) arr.push(grab(480));
+    else arr.push(blank);
+  }
+  const c = compose(arr, { F: 420, decos: false }), lc = $('#liveCanvas');
+  if (lc.width !== c.width || lc.height !== c.height) { lc.width = c.width; lc.height = c.height; }
+  lc.getContext('2d').drawImage(c, 0, 0);
+}
+function liveLoop(t) {
+  requestAnimationFrame(liveLoop);
+  if (t - liveT < 140 || !['live', 'counting'].includes(S.state)) return;
+  liveT = t; try { renderLive(); } catch (e) { /* lewati frame */ }
+}
+
+/* ---------- hasil & download ---------- */
+async function download() {
+  try {
+    const fc = finalCanvas(), blob = await new Promise((res, rej) => fc.toBlob(b => b ? res(b) : rej(new Error('Gambar kosong')), 'image/png'));
+    const name = 'ara9-photobhooth-vintage.png';
+    if (window.showSaveFilePicker) {
+      try {
+        const h = await showSaveFilePicker({ suggestedName: name, types: [{ description: 'Gambar PNG', accept: { 'image/png': ['.png'] } }] });
+        const w = await h.createWritable(); await w.write(blob); await w.close(); return toast('Foto tersimpan.');
+      } catch (e) { if (e.name === 'AbortError') return; }
+    }
+    const url = URL.createObjectURL(blob), a = document.createElement('a');
+    a.href = url; a.download = name; document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 15000); toast('Foto diunduh. Cek folder Download.');
+  } catch (e) { toast('Foto gagal diekspor: ' + e.message, 1); }
+}
+function resetSession(keepDecos) {
+  S.run++; S.photos = []; S.final = null; S.hist = []; S.up = null; revokeVid(); if (!keepDecos) { S.decos = []; S.sel = null; } renderDecos();
+}
+function retake() { resetSession(true); startCam(); }
+function newSession() { resetSession(false); startCam(); }
+
+/* ---------- pengaturan ---------- */
+let raf;
+function sync() {
+  const locked = !['idle', 'live', 'error'].includes(S.state);
+  $$('[data-lay]').forEach(b => { const on = b.dataset.lay === S.layout; b.getAttribute('role') === 'radio' ? b.setAttribute('aria-checked', on) : b.setAttribute('aria-pressed', on); if (b.classList.contains('chip')) b.disabled = locked; });
+  $$('[data-timer]').forEach(b => b.setAttribute('aria-pressed', +b.dataset.timer === S.timer));
+  $$('[data-filter]').forEach(b => b.setAttribute('aria-pressed', b.dataset.filter === S.filter));
+  $$('[data-frame]').forEach(b => b.setAttribute('aria-pressed', b.dataset.frame === S.frame));
+  $('#cbEx').checked = S.exMirror; $('#cbRec').checked = $('#cbRecL').checked = S.wantVideo; $('#cbAudio').checked = S.audio; $('#cbAudio').disabled = !S.wantVideo;
+  const flt = cssFilter(FILTERS[S.filter]); video.style.filter = flt;
+  video.classList.toggle('mirror', S.mirror); $('#btnMirror').setAttribute('aria-pressed', S.mirror);
+  $('#btnMute').setAttribute('aria-pressed', S.muted); $('#btnMute').textContent = S.muted ? 'Suara mati' : 'Suara aktif';
+  const n = LAYOUTS[S.layout].n; $('#btnCapture').textContent = (n === 1 ? 'Ambil foto' : `Mulai ${n} foto`) + (S.wantVideo ? ' + video' : '');
+  if (S.state === 'result') { cancelAnimationFrame(raf); raf = requestAnimationFrame(renderResult); }
+}
+function upd() { if (S.state === 'result') invalidate(); sync(); }
+function resetAll() {
+  Object.assign(S, DEF, { mirror: S.mirror }); S.decos = []; S.sel = null; S.hist = []; renderDecos(); renderFramePreviews(); sync(); toast('Semua pengaturan dikembalikan.');
+}
+function renderFramePreviews() {
+  const L = LAYOUTS[S.layout], lay = L.cols === 1 && L.n > 2 ? 'two' : S.layout;
+  if (!prevBlank) {
+    prevBlank = document.createElement('canvas'); prevBlank.width = 160; prevBlank.height = 120; const g = prevBlank.getContext('2d');
+    g.fillStyle = '#d8d1c3'; g.fillRect(0, 0, 160, 120); g.fillStyle = '#f6f2ea'; g.beginPath(); g.arc(118, 36, 14, 0, 7); g.fill();
+    g.beginPath(); g.moveTo(0, 120); g.lineTo(52, 50); g.lineTo(90, 96); g.lineTo(112, 74); g.lineTo(160, 120); g.fill();
+  }
+  $$('.fbtn').forEach(b => {
+    const c = compose(Array(LAYOUTS[lay].n).fill(prevBlank), { F: 240, decos: false, layout: lay, frame: b.dataset.frame }), cv = b.querySelector('canvas');
+    cv.width = c.width; cv.height = c.height; cv.getContext('2d').drawImage(c, 0, 0);
+  });
+}
+function bindUI() {
+  $$('[data-timer]').forEach(b => b.addEventListener('click', () => { S.timer = +b.dataset.timer; sync(); }));
+  $$('[data-filter]').forEach(b => b.addEventListener('click', () => { S.filter = b.dataset.filter; upd(); }));
+  $$('[data-frame]').forEach(b => b.addEventListener('click', () => { S.frame = b.dataset.frame; upd(); }));
+  $$('[data-lay]').forEach(b => b.addEventListener('click', () => { if (b.disabled) return; S.layout = b.dataset.lay; sync(); setState(S.state); renderFramePreviews(); }));
+  $('#cbEx').addEventListener('change', e => { S.exMirror = e.target.checked; upd(); });
+  [$('#cbRec'), $('#cbRecL')].forEach(cb => cb.addEventListener('change', e => { S.wantVideo = e.target.checked; sync(); }));
+  $('#cbAudio').addEventListener('change', e => { S.audio = e.target.checked; sync(); });
+  $$('.tab').forEach(t => t.addEventListener('click', () => {
+    $$('.tab').forEach(x => x.setAttribute('aria-selected', x === t));
+    $$('.pane').forEach(p => p.hidden = p.dataset.pane !== t.dataset.tab);
+  }));
+  $('#btnStart').onclick = () => startCam(); $('#btnCapture').onclick = shoot; $('#btnCancel').onclick = cancelShoot;
+  $('#btnSwitch').onclick = switchCam;
+  $('#btnRecStop').onclick = async () => { const v = await recStop(); if (v) { S.video = v; toast('Rekaman dihentikan. Foto tetap berlanjut.'); } else toast('Video gagal dibuat (rekaman kosong).', 1); };
+  $('#btnStop').onclick = () => { stopStream(); S.devices = []; setState('idle'); };
+  $('#btnMirror').onclick = () => { S.mirror = !S.mirror; sync(); };
+  $('#btnMute').onclick = () => { S.muted = !S.muted; sync(); };
+  $('#btnLanding').onclick = () => { showView('app'); startCam(); };
+  $('#btnHome').onclick = async () => {
+    S.run++; if (S.rec) await recStop().catch(() => {}); stopStream(); S.devices = []; resetSession(false); $('#count').textContent = ''; setState('idle'); showView('landing');
+  };
+  $('#btnQr').onclick = () => {
+    const box = $('#qrBox'); box.hidden = false;
+    if (S.qrUrl && S.qrVer === S.ver) { drawQR(S.qrUrl); setQr('done', S.qrUrl); } else startUpload();
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  };
+  $('#btnQrRetry').onclick = startUpload;
+  $('#btnCopy').onclick = async () => { const u = $('#qrLink').href; try { await navigator.clipboard.writeText(u); toast('Link disalin.'); } catch (e) { toast('Salin manual: ' + u); } };
+  $('#btnRetake').onclick = retake; $('#btnDownload').onclick = download; $('#btnNew').onclick = newSession; $('#btnResetAll').onclick = resetAll;
+  $('#btnUndo').onclick = undo;
+  $('#btnBig').onclick = () => editSel(d => d.w = clamp(d.w * 1.12, .05, 1.2));
+  $('#btnSmall').onclick = () => editSel(d => d.w = clamp(d.w / 1.12, .05, 1.2));
+  $('#btnRotL').onclick = () => editSel(d => d.r -= 15); $('#btnRotR').onclick = () => editSel(d => d.r += 15);
+  $('#btnFront').onclick = () => reorder(true); $('#btnBack').onclick = () => reorder(false);
+  $('#btnDel').onclick = () => S.sel != null && removeDeco(S.sel);
+  $('#btnClear').onclick = () => { snap(); S.decos = []; S.sel = null; renderDecos(); invalidate(); };
+  ewrap.addEventListener('pointerdown', e => {
+    ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (ptrs.size === 1 && !e.target.closest('.deco') && S.sel != null) select(null);
+    if (ptrs.size === 2 && S.sel != null) startPinch();
+  });
+  ewrap.addEventListener('pointermove', e => { if (ptrs.has(e.pointerId)) { ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY }); if (pinch) doPinch(); } });
+  const endP = e => { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinch = null; };
+  window.addEventListener('pointerup', endP); window.addEventListener('pointercancel', endP);
+  window.addEventListener('pagehide', () => { stopStream(); if (S.rec) { try { S.rec.mr.stop(); } catch (e) { /* abaikan */ } } });
+}
+function showView(v) { document.body.dataset.view = v; window.scrollTo(0, 0); }
+function buildStatic() {
+  const mini = L => `<span class="mini" aria-hidden="true" style="grid-template-columns:repeat(${L.cols},1fr);width:${L.cols === 2 ? 84 : 50}px">${'<i></i>'.repeat(L.n)}</span>`;
+  Object.entries(LAYOUTS).forEach(([k, L]) => {
+    const b = document.createElement('button'); b.className = 'lp-card'; b.setAttribute('role', 'radio'); b.dataset.lay = k;
+    b.innerHTML = `${mini(L)}<b>${L.name}</b><small>${L.sub}</small>`; $('#lpLayouts').append(b);
+    const c = document.createElement('button'); c.className = 'chip'; c.dataset.lay = k; c.textContent = L.name; $('#layChips').append(c);
+  });
+  Object.entries(FILTERS).forEach(([k, f]) => {
+    const b = document.createElement('button'); b.className = 'fchip'; b.dataset.filter = k;
+    const sw = document.createElement('span'); sw.className = 'sw'; sw.style.filter = cssFilter(f);
+    b.append(sw, f.label); $('#filters').append(b);
+  });
+  Object.entries(CATS).forEach(([k, label]) => {
+    const h = document.createElement('p'); h.className = 'cat'; h.textContent = label; const g = document.createElement('div'); g.className = 'fgrid';
+    FR.filter(f => f.cat === k).forEach(f => {
+      const b = document.createElement('button'); b.className = 'fbtn'; b.dataset.frame = f.id; b.setAttribute('aria-label', 'Frame ' + f.name);
+      const s = document.createElement('span'); s.textContent = f.name; b.append(document.createElement('canvas'), s); g.append(b);
+    });
+    $('#frames').append(h, g);
+  });
+}
+function buildThumbs() {
+  ASSETS.forEach((a, i) => {
+    const b = document.createElement('button'); b.className = 'thumb'; b.setAttribute('aria-label', 'Tambah ' + a.l);
+    const im = new Image(); im.src = a.src; im.alt = ''; const s = document.createElement('span'); s.textContent = a.l;
+    b.append(im, s); b.onclick = () => addDeco(i); $('#thumbs').append(b);
+  });
+}
+
+/* ---------- halaman hasil (dibuka lewat QR: ?s=ID&t=TOKEN) ---------- */
+async function rvApi(url, init = {}) {
+  const go = bearer => fetch(url, { ...init, headers: { apikey: SB_KEY, ...init.headers, ...(bearer ? { Authorization: 'Bearer ' + SB_KEY } : {}) } });
+  let r = await go(false); if (r.status === 401) r = await go(true); return r;
+}
+async function rvSign(path, exp = 3600) {
+  const r = await rvApi(`${SB_URL}/storage/v1/object/sign/${SB_BUCKET}/${path}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ expiresIn: exp }) });
+  if (!r.ok) throw new Error('Tidak bisa menyiapkan file (kode ' + r.status + ').');
+  const j = await r.json(); return `${SB_URL}/storage/v1${j.signedURL}`;
+}
+async function rvDl(url, name) {
+  try { const b = await (await fetch(url)).blob(), a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 15000); }
+  catch (e) { window.open(url, '_blank'); }
+}
+function rvFail(m) { $('#rvLoading').hidden = true; $('#rvFail').hidden = false; $('#rvFailMsg').textContent = m; }
+async function runResultView(sid, tok) {
+  if (!/^[0-9a-f-]{36}$/i.test(sid) || !/^[0-9a-f]{32}$/i.test(tok)) return rvFail('Link tidak valid. Pindai ulang QR code dari photobooth.');
+  try {
+    const r = await rvApi(`${SB_URL}/rest/v1/rpc/get_photobooth_session`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ p_id: sid, p_token: tok }) });
+    if (!r.ok) throw new Error('Server menjawab kode ' + r.status + '.');
+    const rows = await r.json(); if (!rows.length) return rvFail('Hasil tidak ditemukan atau masa berlakunya sudah habis.');
+    const s = rows[0], photoUrl = await rvSign(s.photo_path);
+    $('#rvPhoto').src = photoUrl; $('#rvDlPhoto').onclick = () => rvDl(photoUrl, 'ara9-photobhooth.jpg');
+    if (s.video_path) {
+      const ext = s.video_path.split('.').pop(), vidUrl = await rvSign(s.video_path);
+      $('#rvVid').src = vidUrl; $('#rvVidWrap').hidden = false; $('#rvDlAll').hidden = false;
+      $('#rvDlVid').onclick = () => rvDl(vidUrl, 'ara9-video.' + ext);
+      $('#rvDlAll').onclick = async () => { await rvDl(photoUrl, 'ara9-photobhooth.jpg'); setTimeout(() => rvDl(vidUrl, 'ara9-video.' + ext), 700); };
+    }
+    $('#rvExp').textContent = 'Hasil tersedia sampai ' + new Date(s.expires_at).toLocaleString('id-ID', { dateStyle: 'long', timeStyle: 'short' }) + '.';
+    $('#rvLoading').hidden = true; $('#rvOk').hidden = false;
+  } catch (e) { rvFail(e.message || 'Terjadi kesalahan. Coba muat ulang halaman.'); }
+}
+
+/* ---------- mulai ---------- */
+(async function init() {
+  const qp = new URLSearchParams(location.search);
+  if (qp.get('s') && qp.get('t')) { const it = $('#intro'); if (it) it.remove(); showView('result'); runResultView(qp.get('s'), qp.get('t')); return; }
+  introInit(); buildStatic(); bindUI(); setState('idle');
+  await loadAssets(); buildThumbs();
+  try { await Promise.race([Promise.all([document.fonts.load('italic 600 40px "Cormorant Garamond"'), document.fonts.load('500 20px Jost')]), sleep(2500)]); } catch (e) { /* font opsional */ }
+  renderFramePreviews(); renderDecos(); sync(); requestAnimationFrame(liveLoop);
+})();
+})();
+</script>
+</body>
+</html>
